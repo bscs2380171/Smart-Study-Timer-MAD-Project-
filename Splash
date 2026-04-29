@@ -1,0 +1,37 @@
+// ---------------- SPLASH ----------------
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => LoginScreen()),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.timer, size: 80, color: Colors.indigoAccent),
+            SizedBox(height: 20),
+            Text("Smart Study Timer",
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Text("Focus. Track. Improve.", style: TextStyle(color: Colors.grey)),
+          ],
+        ),
+      ),
+    );
+  }
+}
