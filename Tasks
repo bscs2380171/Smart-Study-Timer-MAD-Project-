@@ -1,0 +1,40 @@
+// ---------------- TASKS ----------------
+class TaskScreen extends StatefulWidget {
+  @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  List<String> tasks = [];
+  TextEditingController c = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Tasks")),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(controller: c),
+            ElevatedButton(
+              onPressed: () {
+                if (c.text.isNotEmpty) {
+                  setState(() => tasks.add(c.text));
+                  c.clear();
+                }
+              },
+              child: Text("Add"),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: tasks.length,
+                itemBuilder: (_, i) => ListTile(title: Text(tasks[i])),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
