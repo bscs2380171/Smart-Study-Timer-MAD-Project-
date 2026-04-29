@@ -1,0 +1,37 @@
+// ---------------- MAIN NAV ----------------
+class MainNav extends StatefulWidget {
+  @override
+  _MainNavState createState() => _MainNavState();
+}
+
+class _MainNavState extends State<MainNav> {
+  int index = 0;
+
+  final screens = [
+    HomeScreen(),
+    TimerScreen(),
+    TaskScreen(),
+    StatsScreen(),
+    SettingsScreen()
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(child: screens[index]),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
+        selectedItemColor: Colors.indigoAccent,
+        unselectedItemColor: Colors.grey,
+        onTap: (i) => setState(() => index = i),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.timer), label: "Timer"),
+          BottomNavigationBarItem(icon: Icon(Icons.task_alt), label: "Tasks"),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Stats"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+        ],
+      ),
+    );
+  }
+}
