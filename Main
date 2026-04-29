@@ -1,0 +1,20 @@
+// PREMIUM POLISHED Flutter App – Smart Study Timer (AI Pomodoro)
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+
+void main() => runApp(SmartStudyApp());
+
+class SmartStudyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Color(0xFF0F172A),
+        colorScheme: ColorScheme.dark(primary: Colors.indigoAccent),
+      ),
+      home: SplashScreen(),
+    );
+  }
+}
