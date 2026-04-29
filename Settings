@@ -1,0 +1,25 @@
+// ---------------- SETTINGS ----------------
+class SettingsScreen extends StatefulWidget {
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool notify = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Settings")),
+      body: Column(
+        children: [
+          SwitchListTile(
+            value: notify,
+            onChanged: (v) => setState(() => notify = v),
+            title: Text("Notifications"),
+          ),
+        ],
+      ),
+    );
+  }
+}
