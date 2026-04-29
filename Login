@@ -1,0 +1,31 @@
+//----------------- LOGIN IN ----------------
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Login", style: TextStyle(fontSize: 28)),
+            SizedBox(height: 20),
+            TextField(decoration: InputDecoration(labelText: "Email")),
+            TextField(decoration: InputDecoration(labelText: "Password")),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => MainNav()),
+                );
+              },
+              child: Text("Login"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
