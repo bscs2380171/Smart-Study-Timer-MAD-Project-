@@ -1,0 +1,72 @@
+// ---------------- TIMER ----------------
+class TimerScreen extends StatefulWidget {
+  @override
+  _TimerScreenState createState() => _TimerScreenState();
+}
+
+class _TimerScreenState extends State<TimerScreen> {
+  int time = 1500;
+  Timer? timer;
+
+  void start() {
+    timer?.cancel();
+    timer = Timer.periodic(Duration(seconds: 1), (_) {
+      if (time > 0) setState(() => time--);
+    });
+  }
+
+  void pause() => timer?.cancel();
+
+  void reset() {
+    timer?.cancel();
+    setState(() => time = 1500);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double progress = time / 1500;
+
+    return Scaffold(
+      appBar: AppBar(title: Text("Focus Timer")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  height: 220,
+                  width: 220,
+                  child: CircularProgressIndicator(
+                    value: progress,
+                    strokeWidth: 8,
+                    color: Colors.indigoAccent,
+                  ),
+                ),
+                Text(format(time), style: TextStyle(fontSize: 32)),
+              ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: start, child: Text("Start")),
+                SizedBox(width: 10),
+                ElevatedButton(onPressed: pause, child: Text("Pause")),
+                SizedBox(width: 10),
+                ElevatedButton(onPressed: reset, child: Text("Reset")),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  String format(int s) {
+    int m = s ~/ 60;
+    int sec = s % 60;
+    return "${m.toString().padLeft(2, '0')}:${sec.toString().padLeft(2, '0')}";
+  }
+}
