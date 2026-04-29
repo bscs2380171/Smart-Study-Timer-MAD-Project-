@@ -1,0 +1,15 @@
+// ---------------- STATS ----------------
+class StatsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Statistics")),
+      body: Column(
+        children: [
+          ListTile(title: Text("Sessions"), trailing: Text("12")),
+          ListTile(title: Text("Focus Hours"), trailing: Text("6h")),
+        ],
+      ),
+    );
+  }
+}
